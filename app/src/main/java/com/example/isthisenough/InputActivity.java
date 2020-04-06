@@ -25,8 +25,6 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
         ButterKnife.bind(this);
 
-        inputMinutes = 0;
-        inputHours = 0;
         //Dropdown menu
         dropdown = findViewById(R.id.chooser);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -41,20 +39,35 @@ public class InputActivity extends AppCompatActivity {
 
     @OnClick(R.id.saveHours)
     public void saveHours() {
-        EditText editHours = (EditText) findViewById(R.id.hours);
-        int hoursHelper = Integer.parseInt(editHours.getText().toString());
-        EditText editMinutes = (EditText) findViewById(R.id.minutes);
-        int minutesHelper = Integer.parseInt(editMinutes.getText().toString());
 
-        if (((hoursHelper >= 0) && (hoursHelper <= 23)) && (minutesHelper >= 0) && (minutesHelper <= 59)) {
-            inputHours = hoursHelper;
-            inputMinutes = minutesHelper;
-            saveToast();
-            Intent toMain = new Intent(this, MainActivity.class);
-            startActivity(toMain);
+        EditText editHours = (EditText) findViewById(R.id.hours);
+        String stringhoursHelper = editHours.getText().toString();
+
+        EditText editMinutes = (EditText) findViewById(R.id.minutes);
+        String stringminutesHelper = editMinutes.getText().toString();
+
+
+        if ((stringhoursHelper.matches("")) || (stringminutesHelper.matches(""))) {
+            errorToast();
         }
         else {
-            errorToast();
+            int hoursHelper = Integer.parseInt(editHours.getText().toString());
+            int minutesHelper = Integer.parseInt(editMinutes.getText().toString());
+
+            if ((minutesHelper == 0) != (hoursHelper == 0)) {
+                if ((hoursHelper >= 0) && (hoursHelper <= 23)) {
+                    if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
+                        inputHours = hoursHelper;
+                        inputMinutes = minutesHelper;
+                        saveToast();
+                        Intent toMain = new Intent(this, MainActivity.class);
+                        startActivity(toMain);
+                    }
+                }
+            }
+            else {
+                errorToast();
+            }
         }
     }
 

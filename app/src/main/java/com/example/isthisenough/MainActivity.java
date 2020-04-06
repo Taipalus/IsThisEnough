@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.toInputFromMain)
     public void toInputFromMain() {
-        System.out.println("toCalendar");
         Intent toInput = new Intent(this, InputActivity.class);
         startActivity(toInput);
     }
