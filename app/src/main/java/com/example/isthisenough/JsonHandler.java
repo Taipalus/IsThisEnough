@@ -1,3 +1,4 @@
+/**
 package com.example.isthisenough;
 
 import org.json.JSONException;
@@ -21,3 +22,4 @@ public class JsonHandler extends JSONObject {
         return obj;
     }
 }
+*/
