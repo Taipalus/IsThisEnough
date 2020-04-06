@@ -32,6 +32,13 @@
         android:inputType="number">
     </EditText>
 
+    <Spinner
+        android:id="@+id/chooser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
     <Button
         android:id="@+id/saveHours"
         android:layout_width="wrap_content"
