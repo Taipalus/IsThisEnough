@@ -95,16 +95,14 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
+    /**
     protected void saveJson() {
         String jsonStr = currentDate;
         if (jsonStr != null) {
             try {
                 JSONObject jsonObj = new JSONObject(jsonStr);
 
-                // Getting JSON Array node
                 JSONArray whours = jsonObj.getJSONArray("whours");
-
-                // looping through All Contacts
                 for (int i = 0; i < whours.length(); i++) {
                     JSONObject c = whours.getJSONObject(i);
 
@@ -114,16 +112,13 @@ public class InputActivity extends AppCompatActivity {
                     int hours = c.getInt("h");
                     String jobtitle = c.getString("title");
 
-                    // tmp hash map for single contact
                     //HashMap<String, String> contact = new HashMap<>();
 
-                    // adding each child node to HashMap key => value
                     //hours.put("id", id);
                     //hours.put("date", date);
                     //hours.put("min", minutes);
                     //hours.put("h", hours);
 
-                    // adding contact to contact list
                     workinghours.add(workinghours);
                 }
             } catch (final JSONException e) {
@@ -131,6 +126,7 @@ public class InputActivity extends AppCompatActivity {
             }
         }
     }
+    */
 
     public void saveToast() {
         Context context = getApplicationContext();
