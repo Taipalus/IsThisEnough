@@ -31,7 +31,6 @@ public class InputActivity extends AppCompatActivity {
     private String currentDate;
 
     public ArrayList<ArrayList> workinghours;
-
     public String jsonString;
 
     @Override
