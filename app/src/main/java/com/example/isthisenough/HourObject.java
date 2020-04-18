@@ -48,11 +48,11 @@ public class HourObject {
 
     @Override
     public String toString() {
-        return "HourObject{" +
-                "jobTitle='" + jobTitle + '\'' +
-                ", oHours=" + oHours +
-                ", oMinutes=" + oMinutes +
-                ", jodDescription='" + jodDescription + '\'' +
-                '}';
+        return "[{" +
+                "\""+ "jobTitle" + "\""+ ":" +  "\""+ jobTitle + "\""+
+                "," + "\""+ "oHours" + "\"" + ":" +  "\""+ oHours + "\""+
+                "," + "\""+ "oMinutes" + "\""+ ":" +  "\""+ oMinutes + "\""+
+                "," + "\""+ "jodDescription" +  "\"" + ":"  +  "\""+ jodDescription + "\""+
+                "}]";
     }
 }

@@ -2,12 +2,16 @@ package com.example.isthisenough;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaScannerConnection;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +19,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -82,6 +93,11 @@ public class InputActivity extends AppCompatActivity {
                     if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
                         inputHours = hoursHelper;
                         inputMinutes = minutesHelper;
+
+                        //Here is the save
+                        HourObject todaysinfo = new HourObject("test", inputHours, inputMinutes, "moretest");
+                        saveJson("history.json", todaysinfo.toString());
+
                         saveToast();
                         Intent toMain = new Intent(this, MainActivity.class);
                         startActivity(toMain);
@@ -94,6 +110,56 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
+/**
+    private void saveJson(String data,Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("jsontest.json", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+*/
+
+    public void saveJson(String filename, String input) {
+        try {
+            File jsonFile = new File(((Context) this).getExternalFilesDir(null), filename);
+            if (!jsonFile.exists())
+                jsonFile.createNewFile();
+            // Adds a line to the trace file
+            BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*/));
+            writer.write(input);
+           writer.close();
+           MediaScannerConnection.scanFile((Context) (this),
+                    new String[]{jsonFile.toString()},
+                    null,
+                    null);
+        } catch(IOException e)
+            {
+                Log.e("com.cindypotvin.FileTest", "Unable to write to the jsonFile.txt file.");
+            }
+        }
+
+    /**
+    public void saveJson(String filename, String input) {
+        try {
+            FileOutputStream streamoutput = openFileOutput(filename, Context.MODE_PRIVATE);
+            streamoutput.write(input.getBytes(), 0, input.length());
+            streamoutput.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+*/
+    /**
+    public void writeJsonHelper(View view) {
+        saveJson(this, "history.json", );
+    }
+
+     */
     /**
     protected void saveJson() {
         String jsonStr = currentDate;
