@@ -6,12 +6,14 @@ public class HourObject {
     private int oHours;
     private int oMinutes;
     private String jodDescription;
+    private String date;
 
-    public HourObject(String jobTitle, int oHours, int oMinutes, String jodDescription) {
+    public HourObject(String jobTitle, int oHours, int oMinutes, String jodDescription, String date) {
         this.jobTitle = jobTitle;
         this.oHours = oHours;
         this.oMinutes = oMinutes;
         this.jodDescription = jodDescription;
+        this.date = date;
     }
 
     public String getJobTitle() {
@@ -46,13 +48,22 @@ public class HourObject {
         this.jodDescription = jodDescription;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "[{" +
-                "\""+ "jobTitle" + "\""+ ":" +  "\""+ jobTitle + "\""+
-                "," + "\""+ "oHours" + "\"" + ":" +  "\""+ oHours + "\""+
-                "," + "\""+ "oMinutes" + "\""+ ":" +  "\""+ oMinutes + "\""+
-                "," + "\""+ "jodDescription" +  "\"" + ":"  +  "\""+ jodDescription + "\""+
-                "}]";
+        return "HourObject{" +
+                "jobTitle='" + jobTitle + '\'' +
+                ", oHours=" + oHours +
+                ", oMinutes=" + oMinutes +
+                ", jodDescription='" + jodDescription + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

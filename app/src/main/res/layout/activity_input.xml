@@ -48,6 +48,14 @@
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"/>
 
+    <EditText
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:hint="Job description"
+        android:inputType="text">
+    </EditText>
+
     <Button
         android:id="@+id/saveHours"
         android:layout_width="wrap_content"

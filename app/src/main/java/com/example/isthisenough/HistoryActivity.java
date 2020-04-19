@@ -37,7 +37,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history );
         ButterKnife.bind(this);
-        HourObject testi = new HourObject("Uli", 1 , 1 , "Perkele");
+        //HourObject testi = new HourObject("Uli", 1 , 1 , "Perkele");
         getHistory();
     }
 
@@ -114,6 +114,7 @@ public class HistoryActivity extends AppCompatActivity {
                 //convert the json string back to object
                 HourObject hourObj = gson.fromJson(br, HourObject.class);
 
+                System.out.println("Date: "+ hourObj.getDate());
                 System.out.println("Job title: "+ hourObj.getJobTitle());
                 System.out.println("Hours: "+ hourObj.getoHours());
                 System.out.println("Minutes: "+ hourObj.getoMinutes());

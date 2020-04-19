@@ -2,32 +2,18 @@ package com.example.isthisenough;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaScannerConnection;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +28,7 @@ public class InputActivity extends AppCompatActivity {
     private int inputMinutes;
     private int inputHours;
     private String currentDate;
+    private String jobDescription;
 
     public ArrayList<ArrayList> workinghours;
     public String jsonString;
@@ -81,6 +68,8 @@ public class InputActivity extends AppCompatActivity {
         EditText editMinutes = (EditText) findViewById(R.id.minutes);
         String stringminutesHelper = editMinutes.getText().toString();
 
+        EditText editDescription = (EditText) findViewById(R.id.description);
+        jobDescription = editDescription.getText().toString();
 
         if ((stringhoursHelper.matches("")) || (stringminutesHelper.matches(""))) {
             emptyToast();
@@ -95,24 +84,11 @@ public class InputActivity extends AppCompatActivity {
                     if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
                         inputHours = hoursHelper;
                         inputMinutes = minutesHelper;
-
                         Gson gson = new Gson();
-                        //Here is the save
-                        HourObject todaysinfo = new HourObject("test", inputHours, inputMinutes, "moretest");
+                        HourObject todaysinfo = new HourObject("test", inputHours, inputMinutes, jobDescription , currentDate);
                         String json = gson.toJson(todaysinfo);
-                        //try {
-                            //write converted json data to a file named "CountryGSON.json"
-                            //FileWriter writer = new FileWriter("gsontest.json");
-                            //writer.write(json);
-                            //writer.close();
-                            saveJson("gsontest.json", json);
-
-
-                        //} catch (IOException e) {
-                          //  e.printStackTrace();
-                        //}
+                        saveJson("gsontest.json", json);
                         System.out.println(json);
-                        //saveJson("history.json", todaysinfo.toString());
 
                         saveToast();
                         Intent toMain = new Intent(this, MainActivity.class);
@@ -126,38 +102,6 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
-/**
-    private void saveJson(String data,Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("jsontest.json", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
-*/
-/**
-    public void saveJson(String filename, String input) {
-        try {
-            File jsonFile = new File(((Context) this).getExternalFilesDir(null), filename);
-            if (!jsonFile.exists())
-                jsonFile.createNewFile();
-            // Adds a line to the trace file
-            BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*///));
-   //         writer.write(input);
-     //       writer.close();
-       //     MediaScannerConnection.scanFile(this,
-         //           new String[]{jsonFile.toString()},
-       //             null,
-        //            null);
-      //  } catch(IOException e) {
-      //      Log.e("com.cindypotvin.FileTest", "Unable to write to the jsonFile.txt file.");
-     //   }
-   // }
-
-
     public void saveJson(String filename, String input) {
         try {
             FileOutputStream streamoutput = openFileOutput(filename, Context.MODE_PRIVATE);
@@ -168,45 +112,6 @@ public class InputActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    /**
-    public void writeJsonHelper(View view) {
-        saveJson(this, "history.json", );
-    }
-
-     */
-    /**
-    protected void saveJson() {
-        String jsonStr = currentDate;
-        if (jsonStr != null) {
-            try {
-                JSONObject jsonObj = new JSONObject(jsonStr);
-
-                JSONArray whours = jsonObj.getJSONArray("whours");
-                for (int i = 0; i < whours.length(); i++) {
-                    JSONObject c = whours.getJSONObject(i);
-
-                    String id = c.getString("id");
-                    String date = c.getString("date");
-                    int minutes = c.getInt("min");
-                    int hours = c.getInt("h");
-                    String jobtitle = c.getString("title");
-
-                    //HashMap<String, String> contact = new HashMap<>();
-
-                    //hours.put("id", id);
-                    //hours.put("date", date);
-                    //hours.put("min", minutes);
-                    //hours.put("h", hours);
-
-                    workinghours.add(workinghours);
-                }
-            } catch (final JSONException e) {
-
-            }
-        }
-    }
-    */
 
     public void saveToast() {
         Context context = getApplicationContext();
