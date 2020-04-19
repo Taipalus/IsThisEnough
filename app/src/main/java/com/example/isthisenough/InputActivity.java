@@ -15,6 +15,8 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,9 +96,23 @@ public class InputActivity extends AppCompatActivity {
                         inputHours = hoursHelper;
                         inputMinutes = minutesHelper;
 
+                        Gson gson = new Gson();
                         //Here is the save
                         HourObject todaysinfo = new HourObject("test", inputHours, inputMinutes, "moretest");
-                        saveJson("history.json", todaysinfo.toString());
+                        String json = gson.toJson(todaysinfo);
+                        //try {
+                            //write converted json data to a file named "CountryGSON.json"
+                            //FileWriter writer = new FileWriter("gsontest.json");
+                            //writer.write(json);
+                            //writer.close();
+                            saveJson("gsontest.json", json);
+
+
+                        //} catch (IOException e) {
+                          //  e.printStackTrace();
+                        //}
+                        System.out.println(json);
+                        //saveJson("history.json", todaysinfo.toString());
 
                         saveToast();
                         Intent toMain = new Intent(this, MainActivity.class);
@@ -122,27 +138,26 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 */
-
+/**
     public void saveJson(String filename, String input) {
         try {
             File jsonFile = new File(((Context) this).getExternalFilesDir(null), filename);
             if (!jsonFile.exists())
                 jsonFile.createNewFile();
             // Adds a line to the trace file
-            BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*/));
-            writer.write(input);
-           writer.close();
-           MediaScannerConnection.scanFile((Context) (this),
-                    new String[]{jsonFile.toString()},
-                    null,
-                    null);
-        } catch(IOException e)
-            {
-                Log.e("com.cindypotvin.FileTest", "Unable to write to the jsonFile.txt file.");
-            }
-        }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*///));
+   //         writer.write(input);
+     //       writer.close();
+       //     MediaScannerConnection.scanFile(this,
+         //           new String[]{jsonFile.toString()},
+       //             null,
+        //            null);
+      //  } catch(IOException e) {
+      //      Log.e("com.cindypotvin.FileTest", "Unable to write to the jsonFile.txt file.");
+     //   }
+   // }
 
-    /**
+
     public void saveJson(String filename, String input) {
         try {
             FileOutputStream streamoutput = openFileOutput(filename, Context.MODE_PRIVATE);
@@ -153,7 +168,7 @@ public class InputActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-*/
+
     /**
     public void writeJsonHelper(View view) {
         saveJson(this, "history.json", );

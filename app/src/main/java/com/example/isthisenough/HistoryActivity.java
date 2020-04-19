@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +18,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,7 +93,45 @@ public class HistoryActivity extends AppCompatActivity {
          // This is an old version
 
         public void getHistory() {
-            String json;
+            String json = null;
+
+            Gson gson = new Gson();
+
+            try {
+                InputStream inputStream = openFileInput("gsontest.json");
+
+                System.out.println("Reading JSON from a file");
+                System.out.println("----------------------------");
+
+                File traceFile = new File(((Context) this).getExternalFilesDir(null), "gsontest.json");
+                if (inputStream == null)
+                    Log.e("NoJSON", "There are no entries in the software.");
+                // Adds a line to the trace file
+                InputStreamReader inputStreamReader  = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(inputStreamReader);
+
+                //convert the json string back to object
+                HourObject hourObj = gson.fromJson(br, HourObject.class);
+
+                System.out.println("Job title: "+ hourObj.getJobTitle());
+                System.out.println("Hours: "+ hourObj.getoHours());
+                System.out.println("Minutes: "+ hourObj.getoMinutes());
+                System.out.println("Description: "+ hourObj.getJodDescription());
+
+                /**
+                System.out.println("States are :");
+
+                List listOfStates = countryObj.getListOfStates();
+                for (int i = 0; i < listOfStates.size(); i++) {
+                    System.out.println(listOfStates.get(i));
+                }
+                 */
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            /**
             try {
                 //InputStream streamInput = getAssets().open("history.json");
 
@@ -107,6 +148,8 @@ public class HistoryActivity extends AppCompatActivity {
                 json = new String(buffer, "UTF-8");
 
                 System.out.println(json);
+
+                System.out.println("2");
 
                 //Something funky here. Investigate...
                 JSONArray jsonArray = new JSONArray(json);
@@ -131,6 +174,7 @@ public class HistoryActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+             */
         }
 
 
