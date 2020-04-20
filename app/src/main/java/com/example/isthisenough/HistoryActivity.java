@@ -27,7 +27,7 @@ public class HistoryActivity extends AppCompatActivity {
     public void getHistory() {
 
         try {
-            File traceFile = new File(((Context) this).getExternalFilesDir(null), "gsontest.json");
+            File traceFile = new File(((Context) this).getExternalFilesDir(null), "itehistory.json");
             BufferedReader br = new BufferedReader(new FileReader(traceFile));
 
             String random = br.lines().collect(Collectors.joining());

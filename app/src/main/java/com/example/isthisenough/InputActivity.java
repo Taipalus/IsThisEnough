@@ -80,36 +80,38 @@ public class InputActivity extends AppCompatActivity {
         if ((stringhoursHelper.matches("")) || (stringminutesHelper.matches(""))) {
             emptyToast();
         }
+
         else {
             int hoursHelper = Integer.parseInt(stringhoursHelper);
             int minutesHelper = Integer.parseInt(stringminutesHelper);
 
             //Not implemented. Placeholder.
-            //if ((minutesHelper != 0) || (hoursHelper != 0)) {
-                if ((hoursHelper >= 0) && (hoursHelper <= 23)) {
-                    if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
+            if ((hoursHelper >= 0) && (hoursHelper <= 23)) {
+                if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
 
-                        this.inputHours = hoursHelper;
-                        this.inputMinutes = minutesHelper;
-                        Gson gson = new GsonBuilder()
-                                .setLenient()
-                                .create();
-                        HourObject todaysinfo = new HourObject("test1", inputHours, inputMinutes, jobDescription , this.currentDate);
-                        String json = gson.toJson(todaysinfo);
-                        saveJson("gsontest.json", json);
-                        System.out.println(json);
-
-                        saveToast();
-                        Intent toMain = new Intent(this, MainActivity.class);
-                        startActivity(toMain);
-                    }
+                    this.inputHours = hoursHelper;
+                    this.inputMinutes = minutesHelper;
+                    Gson gson = new GsonBuilder()
+                            .setLenient()
+                            .create();
+                    HourObject todaysinfo = new HourObject("test1", inputHours, inputMinutes, jobDescription, this.currentDate);
+                    String json = gson.toJson(todaysinfo);
+                    saveJson("itehistory.json", json);
+                    System.out.println(json);
+                    saveToast();
+                    Intent toMain = new Intent(this, MainActivity.class);
+                    startActivity(toMain);
                 }
-            //}
+                else {
+                    errorToastM();
+                }
+            }
             else {
-                errorToast();
+                errorToastH();
             }
         }
     }
+
 
     public void saveJson(String filename, String input) {
         try {
@@ -132,15 +134,23 @@ public class InputActivity extends AppCompatActivity {
 
     public void saveToast() {
         Context context = getApplicationContext();
-        CharSequence text = inputHours + " hours and " + inputMinutes + " minutes saved!";
+        CharSequence text = inputHours + " hours and " + inputMinutes + " minutes saved! \n" + "for " + currentDate;
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
 
-    public void errorToast() {
+    public void errorToastH() {
         Context context = getApplicationContext();
-        CharSequence text = "Hours or minutes wrong";
+        CharSequence text = "Hours are wrong. Has to be between 0-23";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void errorToastM() {
+        Context context = getApplicationContext();
+        CharSequence text = "Minutes wrong. Has to be between 0-59.";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
@@ -148,7 +158,7 @@ public class InputActivity extends AppCompatActivity {
 
     public void emptyToast() {
         Context context = getApplicationContext();
-        CharSequence text = "Hours or minutes empty";
+        CharSequence text = "Hours and minutes are mandatory.";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

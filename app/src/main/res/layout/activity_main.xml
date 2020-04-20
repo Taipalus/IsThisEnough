@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/toInputFromMain"
-        android:layout_width="wrap_content"
+        android:layout_width="350sp"
         android:layout_height="wrap_content"
         android:text="New entry"
         android:layout_gravity="center"
@@ -20,7 +20,7 @@
 
     <Button
         android:id="@+id/toHistoryFromMain"
-        android:layout_width="wrap_content"
+        android:layout_width="350sp"
         android:layout_height="wrap_content"
         android:text="History"
         android:layout_gravity="center"
@@ -29,7 +29,7 @@
 
     <Button
         android:id="@+id/toInfoFromMain"
-        android:layout_width="wrap_content"
+        android:layout_width="350sp"
         android:layout_height="wrap_content"
         android:text="Info"
         android:layout_gravity="center"
