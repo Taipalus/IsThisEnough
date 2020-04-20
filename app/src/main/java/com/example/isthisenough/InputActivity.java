@@ -30,7 +30,7 @@ import butterknife.OnClick;
 public class InputActivity extends AppCompatActivity {
 
     private Spinner dropdown;
-    private static String[] items = new String[]{"", "Job 1", "Job 2", "Job 3"};
+    private static String[] items = new String[]{"Select job to assign hours to", "Job 1", "Job 2", "Job 3"};
     private int inputMinutes;
     private int inputHours;
     private String currentDate;
@@ -49,7 +49,7 @@ public class InputActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.date);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
         this.currentDate = sdf.format(new Date());
-        textView.setText(currentDate);
+        textView.setText("Input todays working hours below. Today is : " + currentDate);
 
         //Dropdown menu
         dropdown = findViewById(R.id.chooser);
@@ -85,16 +85,19 @@ public class InputActivity extends AppCompatActivity {
             int hoursHelper = Integer.parseInt(stringhoursHelper);
             int minutesHelper = Integer.parseInt(stringminutesHelper);
 
-            //Not implemented. Placeholder.
             if ((hoursHelper >= 0) && (hoursHelper <= 23)) {
                 if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
 
                     this.inputHours = hoursHelper;
                     this.inputMinutes = minutesHelper;
+                    String text = dropdown.getSelectedItem().toString();
+                    if (text.matches("Select job to assign hours to")) {
+                        text = "Job no specified";
+                    }
                     Gson gson = new GsonBuilder()
                             .setLenient()
                             .create();
-                    HourObject todaysinfo = new HourObject("test1", inputHours, inputMinutes, jobDescription, this.currentDate);
+                    HourObject todaysinfo = new HourObject(text, inputHours, inputMinutes, jobDescription, this.currentDate);
                     String json = gson.toJson(todaysinfo);
                     saveJson("itehistory.json", json);
                     System.out.println(json);
