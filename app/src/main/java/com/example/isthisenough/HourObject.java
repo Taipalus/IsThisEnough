@@ -6,14 +6,14 @@ public class HourObject {
     private int oHours;
     private int oMinutes;
     private String jodDescription;
-    private String date;
+    private String oDate;
 
     public HourObject(String jobTitle, int oHours, int oMinutes, String jodDescription, String date) {
         this.jobTitle = jobTitle;
         this.oHours = oHours;
         this.oMinutes = oMinutes;
         this.jodDescription = jodDescription;
-        this.date = date;
+        this.oDate = date;
     }
 
     public String getJobTitle() {
@@ -49,11 +49,7 @@ public class HourObject {
     }
 
     public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+        return oDate;
     }
 
     @Override
@@ -63,7 +59,7 @@ public class HourObject {
                 ", oHours=" + oHours +
                 ", oMinutes=" + oMinutes +
                 ", jodDescription='" + jodDescription + '\'' +
-                ", date='" + date + '\'' +
+                ", date='" + oDate + '\'' +
                 '}';
     }
 }

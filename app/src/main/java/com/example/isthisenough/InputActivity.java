@@ -2,6 +2,7 @@ package com.example.isthisenough;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -12,7 +13,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +47,7 @@ public class InputActivity extends AppCompatActivity {
         //Time for input field
         TextView textView = findViewById(R.id.date);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-        currentDate = sdf.format(new Date());
+        this.currentDate = sdf.format(new Date());
         textView.setText(currentDate);
 
         //Dropdown menu
@@ -54,7 +59,7 @@ public class InputActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.toMainFromInput)
-    public void toMainFromInfo() {
+    public void toMainFromInput() {
         Intent toMain = new Intent(this, MainActivity.class);
         startActivity(toMain);
     }
@@ -69,23 +74,24 @@ public class InputActivity extends AppCompatActivity {
         String stringminutesHelper = editMinutes.getText().toString();
 
         EditText editDescription = (EditText) findViewById(R.id.description);
-        jobDescription = editDescription.getText().toString();
+        this.jobDescription = editDescription.getText().toString();
 
         if ((stringhoursHelper.matches("")) || (stringminutesHelper.matches(""))) {
             emptyToast();
         }
         else {
-            int hoursHelper = Integer.parseInt(editHours.getText().toString());
-            int minutesHelper = Integer.parseInt(editMinutes.getText().toString());
+            int hoursHelper = Integer.parseInt(stringhoursHelper);
+            int minutesHelper = Integer.parseInt(stringminutesHelper);
 
             //Not implemented. Placeholder.
             //if ((minutesHelper != 0) || (hoursHelper != 0)) {
                 if ((hoursHelper >= 0) && (hoursHelper <= 23)) {
                     if ((minutesHelper >= 0) && (minutesHelper <= 59)) {
-                        inputHours = hoursHelper;
-                        inputMinutes = minutesHelper;
+
+                        this.inputHours = hoursHelper;
+                        this.inputMinutes = minutesHelper;
                         Gson gson = new Gson();
-                        HourObject todaysinfo = new HourObject("test", inputHours, inputMinutes, jobDescription , currentDate);
+                        HourObject todaysinfo = new HourObject("test1", inputHours, inputMinutes, jobDescription , this.currentDate);
                         String json = gson.toJson(todaysinfo);
                         saveJson("gsontest.json", json);
                         System.out.println(json);
@@ -104,10 +110,18 @@ public class InputActivity extends AppCompatActivity {
 
     public void saveJson(String filename, String input) {
         try {
+            File jsonFile = new File(((Context) this).getExternalFilesDir(null), filename);
+            if (!jsonFile.exists())
+                jsonFile.createNewFile();
+            /**
             FileOutputStream streamoutput = openFileOutput(filename, Context.MODE_PRIVATE);
             streamoutput.write(input.getBytes(), 0, input.length());
             streamoutput.close();
-
+             */
+            BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*/));
+            writer.write(input);
+            writer.close();
+            //MediaScannerConnection.scanFile((Context) (this), new String[]{jsonFile.toString()},null,null);
         } catch (IOException e) {
             e.printStackTrace();
         }

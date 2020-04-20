@@ -3,19 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10sp">
 
     <Button
         android:id="@+id/toMainFromInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu" >
+        android:text="Back to main" >
     </Button>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Application info here!">
+        android:layout_height="match_parent"
+        android:text="ITE (Is This Enough) is a small worktime tracker. Functionality include adding and viewing working hours to three different job titles. User can also add descriptions to mark hours. ">
 
     </TextView>
 

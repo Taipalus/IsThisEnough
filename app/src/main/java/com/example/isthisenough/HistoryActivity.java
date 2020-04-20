@@ -4,12 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,20 +31,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HistoryActivity extends AppCompatActivity {
 
-    ArrayList<String> jobslist = new ArrayList<>();
+    //ArrayList<String> jobslist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history );
         ButterKnife.bind(this);
-        //HourObject testi = new HourObject("Uli", 1 , 1 , "Perkele");
         getHistory();
     }
 
@@ -92,91 +100,70 @@ public class HistoryActivity extends AppCompatActivity {
         */
          // This is an old version
 
-        public void getHistory() {
-            String json = null;
+    public void getHistory() {
+        String json = null;
 
-            Gson gson = new Gson();
+        Gson gson = new Gson();
 
-            try {
-                InputStream inputStream = openFileInput("gsontest.json");
+        try {
+            File traceFile = new File(((Context) this).getExternalFilesDir(null), "gsontest.json");
+            BufferedReader br = new BufferedReader(new FileReader(traceFile));
 
-                System.out.println("Reading JSON from a file");
-                System.out.println("----------------------------");
+            //Checker. Not in use...
+            //if (br == null)
+                //Log.e("NoJSON", "There are no entries in the software.");
 
-                File traceFile = new File(((Context) this).getExternalFilesDir(null), "gsontest.json");
-                if (inputStream == null)
-                    Log.e("NoJSON", "There are no entries in the software.");
-                // Adds a line to the trace file
-                InputStreamReader inputStreamReader  = new InputStreamReader(inputStream);
+            HourObject hourObj = gson.fromJson(br, HourObject.class);
 
-                BufferedReader br = new BufferedReader(inputStreamReader);
-
-                //convert the json string back to object
-                HourObject hourObj = gson.fromJson(br, HourObject.class);
-
-                System.out.println("Date: "+ hourObj.getDate());
-                System.out.println("Job title: "+ hourObj.getJobTitle());
-                System.out.println("Hours: "+ hourObj.getoHours());
-                System.out.println("Minutes: "+ hourObj.getoMinutes());
-                System.out.println("Description: "+ hourObj.getJodDescription());
-
-                /**
-                System.out.println("States are :");
-
-                List listOfStates = countryObj.getListOfStates();
-                for (int i = 0; i < listOfStates.size(); i++) {
-                    System.out.println(listOfStates.get(i));
-                }
-                 */
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             /**
-            try {
-                //InputStream streamInput = getAssets().open("history.json");
+             * Test
 
-                InputStream streamInput = openFileInput("history.json");
-                //InputStreamReader inputStreamReader  = new InputStreamReader(inputStream);
+            TypeToken<List<HourObject>> token = new TypeToken<List<HourObject>>(){};
+            List<HourObject> jobslist = gson.fromJson(br, token.getType());
 
-                int size = streamInput.available();
-                byte[] buffer = new byte[size];
-                streamInput.read(buffer);
-                streamInput.close();
-
-                System.out.println(buffer);
-
-                json = new String(buffer, "UTF-8");
-
-                System.out.println(json);
-
-                System.out.println("2");
-
-                //Something funky here. Investigate...
-                JSONArray jsonArray = new JSONArray(json);
-                String output = "";
-
-                System.out.println("3");
-
-                for (int i = 0; i<jsonArray.length(); i++) {
-                    JSONObject obj = jsonArray.getJSONObject(i);
-                    //jobslist.add(obj.getString("jobTitle"));
-                    //String
-                    output += obj.getString("jobTitle") + " , " +
-                            obj.getString("oHours") + " , " +
-                            obj.getString("oMinutes") + " , " +
-                            obj.getString("jodDescription");
-                    System.out.println("Täällä");
-                    Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG).show();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
+            for(int i=0; i<jobslist.size(); i++){
+                HourObject p = jobslist.get(i);
+                System.out.println(p);
             }
-             */
+
+             //Test
+            System.out.println("Reading JSON from a file");
+            System.out.println("----------------------------");
+            */
+            System.out.println(hourObj);
+
+            System.out.println("Job title: "+ hourObj.getJobTitle());
+            System.out.println("Hours: "+ hourObj.getoHours());
+            System.out.println("Minutes: "+ hourObj.getoMinutes());
+            System.out.println("Description: "+ hourObj.getJodDescription());
+            /**
+            String title = hourObj.getJobTitle();
+            int hours = hourObj.getoHours();
+            int minutes = hourObj.getoMinutes();
+            String description= hourObj.getJodDescription();
+
+            //String tester = hourObj.toString();
+
+            //String perkele = "Vittu saatana";
+
+            //TextView textView = findViewById(R.id.teststring);
+            //textView.setText(perkele);
+            /**
+             System.out.println("States are :");
+             List listOfStates = countryObj.getListOfStates();
+             for (int i = 0; i < listOfStates.size(); i++) {
+             System.out.println(listOfStates.get(i));
+             }
+
+            TextView output = (TextView) findViewById(R.id.teststring);
+            output.setText(hourObj.toString());
+            */
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+    }
 
 
     @OnClick(R.id.toMainFromHistory)

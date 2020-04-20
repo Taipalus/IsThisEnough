@@ -10,13 +10,19 @@
         android:id="@+id/toMainFromHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu" >
+        android:text="Back to main" >
     </Button>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your hour history:">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/teststring">
     </TextView>
 
     <ListView
