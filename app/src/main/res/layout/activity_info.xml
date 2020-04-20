@@ -10,7 +10,7 @@
         android:id="@+id/toMainFromInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to main"
+        android:text="@string/back_button"
         >
     </Button>
 
@@ -19,8 +19,7 @@
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:textColor="#222222"
-        android:text="ITE, Is This Enough (can I go home now?) is a small worktime tracker. Functionality include adding and viewing working hours to three different job titles. User can also add descriptions to mark hours. ">
-
+        android:text="@string/info_text">
     </TextView>
 
 </LinearLayout>

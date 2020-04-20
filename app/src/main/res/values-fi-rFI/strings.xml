@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IsThisEnough</string>
+    <string name="history">Historia</string>
+    <string name="new_entry">Uusi merkintä</string>
+    <string name="info">Info</string>
+    <string name="back_button">Takaisin päävalikkoon</string>
+    <string name="input_info">"Syötä tämän päivän työtunnit alle. Tänään on : "</string>
+    <string name="info_text">ITE, Is This Enough (can I go home now?) on pieni työajankirjaussovellus. Sovelluksen ominaisuuksiin lukeutuu tunien kirjaus ja katselmointi kolmeen eri työtehtävään. Käyttäjä voi merkata tehtyihin tunteihin myös kuvauksia työtehtävistä.</string>
+    <string name="info_maker">Sovellus tehty osana Tampereen Ammattikorkeakoulun mobiilisovellisovelluksen ohjelmointikurssia (2020). Tehnyt Tero Taipalus.</string>
+    <string name="info_uses">"Sovellus käyttää Butter Knife komponenttia, Copyright 2013 Jake Wharton , Apache License, Version 2.0 "</string>
+    <string name="save_button">Tallenna</string>
+    <string name="hours_hint">Tunnit</string>
+    <string name="minutes_hint">Minuutit</string>
+    <string name="spinner_select">Valitse työ jolle osoitat tunnit (valinnainen)</string>
+    <string name="jobdesc_hint">Työnkuvaus (valinnainen)</string>
+    <string name="toast_hours">Tunnit väärin. Kuuluu olla väliltä 0-23.</string>
+    <string name="toast_minutes">Minuutit väärin. Kuuluu olla väliltä 0-59.</string>
+    <string name="toast_empty">Tunnit ja minuutit ovat pakollisia.</string>
+    <string name="toast_1save">" tuntia ja "</string>
+    <string name="toast_2save">" minuuttia tallennettu! \\n"</string>
+    <string name="toast_3save">" päivälle "</string>
+</resources>

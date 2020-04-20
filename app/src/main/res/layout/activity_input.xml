@@ -10,7 +10,7 @@
         android:id="@+id/toMainFromInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to main">
+        android:text="@string/back_button">
     </Button>
 
     <TextView
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Hours"
+            android:hint="@string/hours_hint"
             android:id="@+id/hours"
             android:inputType="number"/>
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/minutes"
-            android:hint="Minutes"
+            android:hint="@string/minutes_hint"
             android:inputType="number"/>
     </LinearLayout>
 
@@ -52,7 +52,7 @@
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:id="@+id/description"
-        android:hint="Job description"
+        android:hint="@string/jobdesc_hint"
         android:inputType="text">
     </EditText>
 
@@ -60,7 +60,7 @@
         android:id="@+id/saveHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save">
+        android:text="@string/save_button">
     </Button>
 
 </LinearLayout>

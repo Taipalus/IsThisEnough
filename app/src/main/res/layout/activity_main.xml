@@ -13,7 +13,7 @@
         android:id="@+id/toInputFromMain"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
-        android:text="New entry"
+        android:text="@string/new_entry"
         android:layout_gravity="center"
         android:textSize="50sp">
     </Button>
@@ -22,7 +22,7 @@
         android:id="@+id/toHistoryFromMain"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
-        android:text="History"
+        android:text="@string/history"
         android:layout_gravity="center"
         android:textSize="50sp">
     </Button>
@@ -31,7 +31,7 @@
         android:id="@+id/toInfoFromMain"
         android:layout_width="350sp"
         android:layout_height="wrap_content"
-        android:text="Info"
+        android:text="@string/info"
         android:layout_gravity="center"
         android:textSize="50sp">
     </Button>

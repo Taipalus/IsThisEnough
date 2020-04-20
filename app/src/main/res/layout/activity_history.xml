@@ -10,7 +10,7 @@
         android:id="@+id/toMainFromHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to main" >
+        android:text="@string/back_button" >
     </Button>
 
     <TextView
