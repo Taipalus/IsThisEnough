@@ -16,11 +16,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -33,6 +38,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -113,7 +120,9 @@ public class HistoryActivity extends AppCompatActivity {
             //if (br == null)
                 //Log.e("NoJSON", "There are no entries in the software.");
 
-            HourObject hourObj = gson.fromJson(br, HourObject.class);
+
+            //HourObject hourObj = gson.fromJson(br, HourObject.class);
+
 
             /**
              * Test
@@ -130,12 +139,14 @@ public class HistoryActivity extends AppCompatActivity {
             System.out.println("Reading JSON from a file");
             System.out.println("----------------------------");
             */
-            System.out.println(hourObj);
 
-            System.out.println("Job title: "+ hourObj.getJobTitle());
-            System.out.println("Hours: "+ hourObj.getoHours());
-            System.out.println("Minutes: "+ hourObj.getoMinutes());
-            System.out.println("Description: "+ hourObj.getJodDescription());
+
+            //System.out.println(hourObj);
+
+            //System.out.println("Job title: "+ hourObj.getJobTitle());
+            //System.out.println("Hours: "+ hourObj.getoHours());
+            //System.out.println("Minutes: "+ hourObj.getoMinutes());
+            //System.out.println("Description: "+ hourObj.getJodDescription());
             /**
             String title = hourObj.getJobTitle();
             int hours = hourObj.getoHours();
@@ -154,10 +165,15 @@ public class HistoryActivity extends AppCompatActivity {
              for (int i = 0; i < listOfStates.size(); i++) {
              System.out.println(listOfStates.get(i));
              }
+            */
+            String random = br.lines().collect(Collectors.joining());
+
+            System.out.println(random);
 
             TextView output = (TextView) findViewById(R.id.teststring);
-            output.setText(hourObj.toString());
-            */
+            output.setText(random);
+
+
 
         } catch (IOException e) {
             e.printStackTrace();

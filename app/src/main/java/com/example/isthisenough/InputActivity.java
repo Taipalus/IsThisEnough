@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -90,7 +91,9 @@ public class InputActivity extends AppCompatActivity {
 
                         this.inputHours = hoursHelper;
                         this.inputMinutes = minutesHelper;
-                        Gson gson = new Gson();
+                        Gson gson = new GsonBuilder()
+                                .setLenient()
+                                .create();
                         HourObject todaysinfo = new HourObject("test1", inputHours, inputMinutes, jobDescription , this.currentDate);
                         String json = gson.toJson(todaysinfo);
                         saveJson("gsontest.json", json);
