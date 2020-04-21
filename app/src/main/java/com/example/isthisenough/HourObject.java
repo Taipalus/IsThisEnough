@@ -61,6 +61,11 @@ public class HourObject {
         return oDate;
     }
 
+    /**
+     *  POJO classes toString method
+     * @return returns all the data in the object in string.
+     */
+
     @Override
     public String toString() {
         return "HourObject{" +
