@@ -8,6 +8,11 @@ import butterknife.OnClick;
 
 public class InfoActivity extends AppCompatActivity {
 
+    /**
+     * Creates the view.
+     * This screen is for viewing the info of the software.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +20,9 @@ public class InfoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    /**
+     * Button for going to Main screen.
+     */
     @OnClick(R.id.toMainFromInfo)
     public void toMainFromInfo() {
         Intent toMain = new Intent(this, MainActivity.class);

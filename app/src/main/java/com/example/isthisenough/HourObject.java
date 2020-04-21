@@ -8,6 +8,15 @@ public class HourObject {
     private String jodDescription;
     private String oDate;
 
+    /**
+     * Hour POJO class.
+     * @param jobTitle Title of the hours given.
+     * @param oHours hours for this job.
+     * @param oMinutes minutes for this job.
+     * @param jodDescription description for the job.
+     * @param date jobs date.
+     */
+
     public HourObject(String jobTitle, int oHours, int oMinutes, String jodDescription, String date) {
         this.jobTitle = jobTitle;
         this.oHours = oHours;

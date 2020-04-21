@@ -33,6 +33,14 @@ public class InputActivity extends AppCompatActivity {
 
     public ArrayList<ArrayList> workinghours;
 
+    /**
+     *  Creates the view.
+     *  This view is for inputing data to software.
+     *  Checks for the date and saves it to variable to be used at save.
+     *  Generates spinner for the view depending on the system language.
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +53,26 @@ public class InputActivity extends AppCompatActivity {
         textView.setText(getString(R.string.input_info) + currentDate);
 
         items = new String[]{getString(R.string.input_nojob), getString(R.string.input_job1), getString(R.string.input_job2), getString(R.string.input_job3)};
-
         dropdown = findViewById(R.id.chooser);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
-
         workinghours = new ArrayList<>();
     }
+
+    /**
+     * Button for going to Main screen.
+     */
 
     @OnClick(R.id.toMainFromInput)
     public void toMainFromInput() {
         Intent toMain = new Intent(this, MainActivity.class);
         startActivity(toMain);
     }
+
+    /**
+     * Function that converts data to proper form and check that everything is fine to be saved.
+     * Does not actually save anything but calls for save after everything is checked.
+     */
 
     @OnClick(R.id.saveHours)
     public void saveHours() {
@@ -111,6 +126,11 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Save function for the user input. Checks if there is a file where to save if not creates one.
+     * @param filename hardcoded filename where the saving is done.
+     * @param input JSON string that is saved to file.
+     */
 
     public void saveJson(String filename, String input) {
         try {
@@ -125,6 +145,10 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Toast message after save to file is done. Informs user what the input was.
+     */
+
     public void saveToast() {
         Context context = getApplicationContext();
         CharSequence text = inputHours + getString(R.string.toast_1save) + inputMinutes +
@@ -134,6 +158,9 @@ public class InputActivity extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * Toast message if user input is false on hours.
+     */
     public void errorToastH() {
         Context context = getApplicationContext();
         CharSequence text = getString(R.string.toast_hours);
@@ -142,6 +169,10 @@ public class InputActivity extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * Toast message if user input is false on minutes.
+     */
+
     public void errorToastM() {
         Context context = getApplicationContext();
         CharSequence text = getString(R.string.toast_minutes);
@@ -149,6 +180,10 @@ public class InputActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+    /**
+     * Toast message if user input is empty on hours or minutes.
+     */
 
     public void emptyToast() {
         Context context = getApplicationContext();

@@ -16,6 +16,12 @@ import butterknife.OnClick;
 
 public class HistoryActivity extends AppCompatActivity {
 
+    /**
+     * Creates the view.
+     * This screen is for viewing the history of use input.
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,9 @@ public class HistoryActivity extends AppCompatActivity {
         getHistory();
     }
 
+    /**
+     * Finds out the file where data is stored and shows it to the user.
+     */
     public void getHistory() {
 
         try {
@@ -43,7 +52,9 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Button for going to Main screen.
+     */
     @OnClick(R.id.toMainFromHistory)
     public void toMainFromInfo() {
         Intent toMain = new Intent(this, MainActivity.class);
