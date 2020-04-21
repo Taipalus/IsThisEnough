@@ -21,4 +21,7 @@
     <string name="toast_2save">" minutes saved! \\n"</string>
     <string name="toast_3save">"for "</string>
     <string name="input_nojob">Job no specified</string>
+    <string name="input_job1">Job 1</string>
+    <string name="input_job2">Job 2</string>
+    <string name="input_job3">Job 3</string>
 </resources>

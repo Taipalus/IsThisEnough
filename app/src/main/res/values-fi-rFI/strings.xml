@@ -21,4 +21,7 @@
     <string name="toast_2save">" minuuttia tallennettu! \\n"</string>
     <string name="toast_3save">" päivälle "</string>
     <string name="input_nojob">Tunteja ei määrätty työtehtävälle</string>
+    <string name="input_job1">Työtehtävä 1</string>
+    <string name="input_job2">Työtehtävä 2</string>
+    <string name="input_job3">Työtehtävä 3</string>
 </resources>

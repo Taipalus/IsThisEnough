@@ -32,7 +32,7 @@ import butterknife.OnClick;
 public class InputActivity extends AppCompatActivity {
 
     private Spinner dropdown;
-    private static String[] items = new String[]{"Select job to assign hours to", "Job 1", "Job 2", "Job 3"};
+    private String[] items;
     private int inputMinutes;
     private int inputHours;
     private String currentDate;
@@ -53,12 +53,15 @@ public class InputActivity extends AppCompatActivity {
         this.currentDate = sdf.format(new Date());
         textView.setText(getString(R.string.input_info) + currentDate);
 
+        items = new String[]{getString(R.string.input_nojob), getString(R.string.input_job1), getString(R.string.input_job2), getString(R.string.input_job3)};
+
         //Dropdown menu
         dropdown = findViewById(R.id.chooser);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
         workinghours = new ArrayList<>();
+
     }
 
     @OnClick(R.id.toMainFromInput)
