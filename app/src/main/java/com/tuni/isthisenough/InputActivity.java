@@ -121,7 +121,6 @@ public class InputActivity extends AppCompatActivity {
                     HourObject todaysinfo = new HourObject(selectedJob, inputHours, inputMinutes, jobDescription, this.currentDate);
                     String json = gson.toJson(todaysinfo);
                     saveJson("itehistory.json", json);
-                    System.out.println(json);
                     saveToast();
                     Intent toMain = new Intent(this, MainActivity.class);
                     startActivity(toMain);
