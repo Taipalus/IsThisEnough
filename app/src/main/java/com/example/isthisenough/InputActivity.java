@@ -48,7 +48,7 @@ public class InputActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         TextView textView = findViewById(R.id.date);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         this.currentDate = sdf.format(new Date());
         textView.setText(getString(R.string.input_info) + currentDate);
 
@@ -152,7 +152,7 @@ public class InputActivity extends AppCompatActivity {
     public void saveToast() {
         Context context = getApplicationContext();
         CharSequence text = inputHours + getString(R.string.toast_1save) + inputMinutes +
-                getString(R.string.toast_2save) + getString(R.string.toast_3save) + currentDate;
+                getString(R.string.toast_2save) + "\n" + getString(R.string.toast_3save) + currentDate;
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

@@ -18,7 +18,7 @@
     <string name="toast_minutes">Minuutit väärin. Kuuluu olla väliltä 0-59.</string>
     <string name="toast_empty">Tunnit ja minuutit ovat pakollisia.</string>
     <string name="toast_1save">" tuntia ja "</string>
-    <string name="toast_2save">" minuuttia tallennettu! \\n"</string>
+    <string name="toast_2save">" minuuttia tallennettu!"</string>
     <string name="toast_3save">" päivälle "</string>
     <string name="input_nojob">Tunteja ei määrätty työtehtävälle</string>
     <string name="input_job1">Työtehtävä 1</string>

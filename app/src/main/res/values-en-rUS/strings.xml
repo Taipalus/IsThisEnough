@@ -18,7 +18,7 @@
     <string name="toast_minutes">Minutes wrong. Has to be between 0-59.</string>
     <string name="toast_empty">Hours and minutes are mandatory.</string>
     <string name="toast_1save">" hours and "</string>
-    <string name="toast_2save">" minutes saved! \\n"</string>
+    <string name="toast_2save">" minutes saved!"</string>
     <string name="toast_3save">"for "</string>
     <string name="input_nojob">Job no specified</string>
     <string name="input_job1">Job 1</string>
