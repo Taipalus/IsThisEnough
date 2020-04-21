@@ -20,4 +20,5 @@
     <string name="toast_1save">" hours and "</string>
     <string name="toast_2save">" minutes saved! \\n"</string>
     <string name="toast_3save">"for "</string>
+    <string name="input_nojob">Job no specified</string>
 </resources>

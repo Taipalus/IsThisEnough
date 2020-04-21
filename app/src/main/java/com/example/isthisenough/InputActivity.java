@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -90,14 +92,16 @@ public class InputActivity extends AppCompatActivity {
 
                     this.inputHours = hoursHelper;
                     this.inputMinutes = minutesHelper;
-                    String text = dropdown.getSelectedItem().toString();
-                    if (text.matches("Select job to assign hours to")) {
-                        text = "Job no specified";
+                    String selectedJob = dropdown.getSelectedItem().toString();
+
+                    long spinnerID = dropdown.getSelectedItemId();
+                    if (spinnerID == 0) {
+                        selectedJob = getString(R.string.input_nojob);
                     }
                     Gson gson = new GsonBuilder()
                             .setLenient()
                             .create();
-                    HourObject todaysinfo = new HourObject(text, inputHours, inputMinutes, jobDescription, this.currentDate);
+                    HourObject todaysinfo = new HourObject(selectedJob, inputHours, inputMinutes, jobDescription, this.currentDate);
                     String json = gson.toJson(todaysinfo);
                     saveJson("itehistory.json", json);
                     System.out.println(json);
