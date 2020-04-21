@@ -6,7 +6,7 @@
     <string name="info">Info</string>
     <string name="back_button">Takaisin päävalikkoon</string>
     <string name="input_info">"Syötä tämän päivän työtunnit alle. Tänään on : "</string>
-    <string name="info_text">ITE, Is This Enough (voinko jo lähteä kotiin?) on pieni työajankirjaussovellus. Sovelluksen ominaisuuksiin lukeutuu tunien kirjaus ja katselmointi kolmeen eri työtehtävään. Käyttäjä voi merkata tehtyihin tunteihin myös kuvauksia työtehtävistä.</string>
+    <string name="info_text">ITE, Is This Enough (voinko jo lähteä kotiin?) on pieni työajankirjaussovellus. Sovelluksen ominaisuuksiin lukeutuu tuntien kirjaus ja katselmointi kolmeen eri työtehtävään. Käyttäjä voi merkata tehtyihin tunteihin myös kuvauksia työtehtävistä.</string>
     <string name="info_maker">Sovellus tehty osana Tampereen Ammattikorkeakoulun mobiilisovellisovelluksen ohjelmointikurssia (2020). Tehnyt Tero Taipalus.</string>
     <string name="info_uses">"Sovellus käyttää Butter Knife komponenttia, Copyright 2013 Jake Wharton , Apache License, Version 2.0 "</string>
     <string name="save_button">Tallenna</string>

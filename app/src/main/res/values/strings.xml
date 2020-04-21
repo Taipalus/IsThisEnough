@@ -9,7 +9,7 @@
     <string name="hours_hint">Hours</string>
     <string name="minutes_hint">Minutes</string>
     <string name="spinner_select">Select job to assingn hours to (optinal)</string>
-    <string name="jobdesc_hint">Job description</string>
+    <string name="jobdesc_hint">Job description (optinal)</string>
     <string name="save_button">Save</string>
     <string name="info_text">"ITE, Is This Enough (can I go home now?) is a small worktime tracker. Functionality include adding and viewing working hours to three different job titles. User can also add descriptions to mark hours. "</string>
     <string name="info_maker">Software done as part of Tampere university of applied sciences mobile programming 1 cource (2020). Developed by Tero Taipalus.</string>
