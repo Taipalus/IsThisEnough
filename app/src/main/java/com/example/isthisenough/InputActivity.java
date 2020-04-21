@@ -22,6 +22,11 @@ import java.util.Date;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ *  @author Tero Taipalus
+ *  This class is for inputting data to software.
+ */
+
 public class InputActivity extends AppCompatActivity {
 
     private Spinner dropdown;
@@ -35,9 +40,8 @@ public class InputActivity extends AppCompatActivity {
 
     /**
      *  Creates the view.
-     *  This view is for inputing data to software.
-     *  Checks for the date and saves it to variable to be used at save.
-     *  Generates spinner for the view depending on the system language.
+     *  Checks for the date and stores it to variable to be used at save.
+     *  Generates spinner for the view.
      * @param savedInstanceState
      */
 
@@ -60,6 +64,7 @@ public class InputActivity extends AppCompatActivity {
     }
 
     /**
+     * Function for button.
      * Button for going to Main screen.
      */
 
@@ -70,8 +75,11 @@ public class InputActivity extends AppCompatActivity {
     }
 
     /**
-     * Function that converts data to proper form and check that everything is fine to be saved.
+     * When clicked starts the proses of checking input.
+     * Function converts data to proper form and check that everything is fine to be saved.
      * Does not actually save anything but calls for save after everything is checked.
+     * If data is incorrect toast is called.
+     * After save main view is loaded and other toast is called to inform user about the save.
      */
 
     @OnClick(R.id.saveHours)

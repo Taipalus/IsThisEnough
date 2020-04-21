@@ -14,11 +14,16 @@ import java.util.stream.Collectors;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ *  @author Tero Taipalus
+ *  This class is for the history view of user input.
+ */
+
 public class HistoryActivity extends AppCompatActivity {
 
     /**
      * Creates the view.
-     * This screen is for viewing the history of use input.
+     * Calls for getHistory that fetches the info to view.
      * @param savedInstanceState
      */
 
@@ -39,12 +44,10 @@ public class HistoryActivity extends AppCompatActivity {
             File traceFile = new File(((Context) this).getExternalFilesDir(null), "itehistory.json");
             BufferedReader br = new BufferedReader(new FileReader(traceFile));
 
-            String random = br.lines().collect(Collectors.joining());
-
-            System.out.println(random);
+            String jsonString = br.lines().collect(Collectors.joining());
 
             TextView output = (TextView) findViewById(R.id.hoursstring);
-            output.setText(random);
+            output.setText(jsonString);
 
         } catch (IOException e) {
             e.printStackTrace();

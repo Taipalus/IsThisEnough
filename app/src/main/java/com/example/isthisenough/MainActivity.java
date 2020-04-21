@@ -6,11 +6,15 @@ import android.os.Bundle;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ *  @author Tero Taipalus
+ *  This class is for main view of the software.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     /**
      * Creates the view.
-     *
      * @param savedInstanceState
      */
 

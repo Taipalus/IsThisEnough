@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ *  @author Tero Taipalus
+ *  This class is for the info view.
+ */
+
 public class InfoActivity extends AppCompatActivity {
 
     /**

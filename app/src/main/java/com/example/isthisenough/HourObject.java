@@ -1,5 +1,10 @@
 package com.example.isthisenough;
 
+/**
+ * @author Tero Taipalus
+ * HourObject POJO class. Used to objects.
+ */
+
 public class HourObject {
 
     private String jobTitle;
@@ -9,7 +14,7 @@ public class HourObject {
     private String oDate;
 
     /**
-     * Hour POJO class.
+     * Constructor of class.
      * @param jobTitle Title of the hours given.
      * @param oHours hours for this job.
      * @param oMinutes minutes for this job.
