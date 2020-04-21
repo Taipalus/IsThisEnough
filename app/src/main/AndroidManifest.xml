@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        <activity android:name="com.tuni.isthisenough.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InputActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".InfoActivity" />
+        <activity android:name="com.tuni.isthisenough.InputActivity" />
+        <activity android:name="com.tuni.isthisenough.HistoryActivity" />
+        <activity android:name="com.tuni.isthisenough.InfoActivity" />
     </application>
 
 </manifest>

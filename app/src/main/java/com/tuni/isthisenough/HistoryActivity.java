@@ -1,10 +1,13 @@
-package com.example.isthisenough;
+package com.tuni.isthisenough;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.isthisenough.R;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

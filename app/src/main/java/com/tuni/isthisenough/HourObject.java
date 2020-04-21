@@ -1,4 +1,4 @@
-package com.example.isthisenough;
+package com.tuni.isthisenough;
 
 /**
  * @author Tero Taipalus

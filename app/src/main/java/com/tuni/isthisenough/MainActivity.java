@@ -1,8 +1,11 @@
-package com.example.isthisenough;
+package com.tuni.isthisenough;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.isthisenough.R;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
