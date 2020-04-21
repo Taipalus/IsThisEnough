@@ -34,7 +34,7 @@ public class HistoryActivity extends AppCompatActivity {
 
             System.out.println(random);
 
-            TextView output = (TextView) findViewById(R.id.teststring);
+            TextView output = (TextView) findViewById(R.id.hoursstring);
             output.setText(random);
 
         } catch (IOException e) {

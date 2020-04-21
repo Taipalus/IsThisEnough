@@ -24,4 +24,5 @@
     <string name="input_job1">Job 1</string>
     <string name="input_job2">Job 2</string>
     <string name="input_job3">Job 3</string>
+    <string name="history_info">Your hour history:</string>
 </resources>

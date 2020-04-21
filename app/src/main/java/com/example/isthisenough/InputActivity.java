@@ -2,24 +2,17 @@ package com.example.isthisenough;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaScannerConnection;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -39,7 +32,6 @@ public class InputActivity extends AppCompatActivity {
     private String jobDescription;
 
     public ArrayList<ArrayList> workinghours;
-    public String jsonString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +39,6 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
         ButterKnife.bind(this);
 
-        //Time for input field
         TextView textView = findViewById(R.id.date);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
         this.currentDate = sdf.format(new Date());
@@ -55,13 +46,11 @@ public class InputActivity extends AppCompatActivity {
 
         items = new String[]{getString(R.string.input_nojob), getString(R.string.input_job1), getString(R.string.input_job2), getString(R.string.input_job3)};
 
-        //Dropdown menu
         dropdown = findViewById(R.id.chooser);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
         workinghours = new ArrayList<>();
-
     }
 
     @OnClick(R.id.toMainFromInput)
@@ -128,15 +117,9 @@ public class InputActivity extends AppCompatActivity {
             File jsonFile = new File(((Context) this).getExternalFilesDir(null), filename);
             if (!jsonFile.exists())
                 jsonFile.createNewFile();
-            /**
-            FileOutputStream streamoutput = openFileOutput(filename, Context.MODE_PRIVATE);
-            streamoutput.write(input.getBytes(), 0, input.length());
-            streamoutput.close();
-             */
             BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile, true /*append*/));
             writer.write(input);
             writer.close();
-            //MediaScannerConnection.scanFile((Context) (this), new String[]{jsonFile.toString()},null,null);
         } catch (IOException e) {
             e.printStackTrace();
         }

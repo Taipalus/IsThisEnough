@@ -16,19 +16,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your hour history:">
+        android:text="@string/history_info">
     </TextView>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/teststring">
-    </TextView>
-
-    <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list_item">
-    </ListView>
+        android:id="@+id/hoursstring">
+    </TextView>
 
 </LinearLayout>

@@ -24,4 +24,5 @@
     <string name="input_job1">Työtehtävä 1</string>
     <string name="input_job2">Työtehtävä 2</string>
     <string name="input_job3">Työtehtävä 3</string>
+    <string name="history_info">Tuntihistoriasia:</string>
 </resources>

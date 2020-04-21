@@ -3,15 +3,10 @@ package com.example.isthisenough;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import java.util.ArrayList;
-
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
-
-    ArrayList<String> jobslist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
